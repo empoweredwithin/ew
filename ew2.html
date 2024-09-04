@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Text</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            -webkit-user-select: none; /* Disable text selection */
+            user-select: none; /* Disable text selection */
+        }
+        .blurred-text {
+            filter: blur(8px);
+            transition: filter 0.5s ease;
+        }
+        .active {
+            filter: blur(0);
+        }
+    </style>
+</head>
+<body>
+    <div id="text" class="blurred-text">
+        254452254452_p
+    </div>
+
+    <script>
+        const textElement = document.getElementById('text');
+
+        // Handle touchstart (when the user touches the text)
+        textElement.addEventListener('touchstart', function() {
+            textElement.classList.add('active');
+        });
+
+        // Handle touchend (when the user lifts their finger)
+        textElement.addEventListener('touchend', function() {
+            setTimeout(function() {
+                textElement.classList.remove('active');
+            }, 100); // Adjust the delay as needed
+        });
+
+        // Handle mouse events for desktop
+        textElement.addEventListener('mouseenter', function() {
+            textElement.classList.add('active');
+        });
+
+        textElement.addEventListener('mouseleave', function() {
+            textElement.classList.remove('active');
+        });
+
+        // Block screenshots on PrintScreen key press
+        document.onkeydown = function(e) {
+            if (e.keyCode === 44 || e.key === "PrintScreen") {
+                alert("Screenshots are disabled!");
+                return false;
+            }
+        };
+        document.onkeyup = function(e) {
+            if (e.keyCode === 44 || e.key === "PrintScreen") {
+                alert("Screenshots are disabled!");
+                return false;
+            }
+        };
+    </script>
+</body>
+</html>
