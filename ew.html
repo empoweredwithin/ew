@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Text</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        .blurred-text {
+            filter: blur(8px);
+            transition: filter 0.5s ease;
+        }
+        .blurred-text:hover {
+            filter: blur(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="blurred-text">
+        254452254452_p
+    </div>
+
+    <script>
+        document.onkeydown = function(e) {
+            if (e.keyCode == 44 || e.key == "PrintScreen") {
+                alert("Screenshots are disabled!");
+                return false;
+            }
+        };
+        document.onkeyup = function(e) {
+            if (e.keyCode == 44 || e.key == "PrintScreen") {
+                alert("Screenshots are disabled!");
+                return false;
+            }
+        };
+    </script>
+</body>
+</html>
